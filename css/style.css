@@ -1,0 +1,56 @@
+body {
+    background-color: #9146FF;
+    width: 400px;
+    box-shadow: inset;
+    font-family: Lobster;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    height: 100px;
+}
+
+input {
+    background-color: #0a0019;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    height: 60px;
+    width: 150px;
+    transition-duration: 0.1s;
+    font-family: Lobster;
+    font-size: 20px;
+}
+
+input:hover {
+    transition-duration: 0.1s;
+    color: green;
+}
+
+.stream_share {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start_stream {
+    display: flex;
+}
+
+.end_stream {
+    display: none;
+}
+
+.stream_code {
+    font-size: 30px;
+    font-family: Roboto;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,21 @@
+{
+    "name": "Stream Share",
+    "description": "Host a streaming session",
+    "version": "1.0",
+    "manifest_version": 2,
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": "images/icon.png"
+    },
+    "permissions": [
+        "https://youtube.com/*",
+        "activeTab",
+        "tabs"
+    ]
+}
