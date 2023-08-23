@@ -35,12 +35,9 @@ input:hover {
     align-items: center;
 }
 
-.start_stream {
-    display: flex;
-}
-
+.start_stream,
 .end_stream {
-    display: none;
+    display: flex;
 }
 
 .stream_code {

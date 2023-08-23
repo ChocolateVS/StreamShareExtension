@@ -2,7 +2,7 @@ let url = "https://share.rowansserver.com/";
 
 let active_tabs = [];
 
-// On Message from a tab
+// On a message from a tab
 chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
 
     // Start Streaming
@@ -32,6 +32,7 @@ chrome.runtime.onMessage.addListener(async function (request, sender, sendRespon
         console.log("Stopping Stream", request)
         active_tabs[request.id].streaming = false;
         sendResponse(active_tabs[request.id]);
+        await fetch(url + "stream/end/" + active_tabs[request.id].stream_code);
     }
 
     else if (request.action == "streamStatus") {
@@ -53,11 +54,18 @@ chrome.runtime.onMessage.addListener(async function (request, sender, sendRespon
     }
 });
 
+// Send a message to tab by the tab's id
+async function sendMessage(id, action, data) {
+    chrome.tabs.sendMessage(id, { action: action, data: data });
+}
+
+// Request a random stream code
 async function getStreamCode() {
     let data = await xhrRequest("GET", url + "stream/start")
     return data;
 }
 
+// Get video details
 async function getVideoData(id) {
     return {
         currentTime: await getValue('document.querySelector("video").currentTime', id),
@@ -115,10 +123,6 @@ async function xhrRequest(method, url, data) {
     } else {
         console.error('POST request failed');
     }
-}
-
-async function sendMessage(id, action, data) {
-    chrome.tabs.sendMessage(id, { action: action, data: data });
 }
 
 async function getTabById(id) {

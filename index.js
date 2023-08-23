@@ -69,16 +69,13 @@ async function stopStream() {
 
 function streamStartedUI() {
     id("streamBtn").value = "End Stream";
-    id("end_stream").style.display = "flex";
     id("stream_code").innerHTML = "Stream Code: " + stream.stream_code;
     id("stream_link").setAttribute("href", url + stream.stream_code)
-    id("body").height = "";
 }
 
 function streamStoppedUI() {
     id("streamBtn").value = "Share";
-    id("end_stream").style.display = "none";
-    id("body").height = "100px";
+    id("stream_code").innerHTML = "Not Streaming";
 }
 
 async function sendMessage(action, id) {
